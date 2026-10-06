@@ -5,7 +5,8 @@ import { COMPANY } from "@/lib/company";
 import "./globals.css";
 
 const publicIndexingEnabled =
-  process.env.NEXT_PUBLIC_PUBLIC_SITE_READY === "true";
+  process.env.VERCEL_ENV === "production" &&
+  process.env.NEXT_PUBLIC_PUBLIC_SITE_READY !== "false";
 
 export const metadata: Metadata = {
   metadataBase: new URL(COMPANY.domain),
