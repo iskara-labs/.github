@@ -25,9 +25,9 @@ defaults:
 
 jobs:
   verify:
-    name: typecheck · build
+    name: contracts · typecheck · build · browser
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -40,5 +40,11 @@ jobs:
       - name: Install
         run: npm install --no-audit --no-fund
 
-      - name: Verify
+      - name: Verify contracts, types and production build
         run: npm run check
+
+      - name: Install Chromium and WebKit for browser regression
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Browser regression — routes and responsive layout
+        run: npm run test:e2e
