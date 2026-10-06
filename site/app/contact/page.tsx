@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -11,25 +12,28 @@ const contactPaths = [
   {
     label: "Product & partnerships",
     title: "Build with context",
-    copy: "For product, partnership and ecosystem conversations, start from the verified founder profile so the conversation keeps a clear source of truth.",
-    href: COMPANY.founderProfile,
-    cta: "Founder profile ↗",
+    copy: "For product, partnership and ecosystem conversations, start with the Iskara Labs founder profile and company context.",
+    href: COMPANY.founderPath,
+    cta: "Founder profile →",
+    external: false,
   },
   {
     label: "Engineering",
-    title: "Follow the work",
-    copy: "The Iskara Labs GitHub organization is the engineering source of truth for the portfolio, shared infrastructure and public project history.",
+    title: "Public engineering profile",
+    copy: "The Iskara Labs GitHub organization exposes only the organization profile and repositories intentionally made public. Private product repositories remain private.",
     href: COMPANY.github,
-    cta: "GitHub organization ↗",
+    cta: "Public GitHub organization ↗",
+    external: true,
   },
   {
     label: "Professional network",
     title: "Founder network",
     copy: "For investor, advisor and ecosystem introductions, use the founder's professional network profile.",
-    href: "https://www.linkedin.com/in/sedatiskara/",
+    href: COMPANY.founderLinkedIn,
     cta: "LinkedIn ↗",
+    external: true,
   },
-];
+] as const;
 
 export default function ContactPage() {
   return (
@@ -55,27 +59,43 @@ export default function ContactPage() {
       </div>
 
       <div className="v2-contact-grid">
-        {contactPaths.map((item, index) => (
-          <a
-            key={item.label}
-            className="v2-contact-card"
-            href={item.href}
-            target="_blank"
-            rel="noreferrer"
-            data-reveal
-            style={{ ["--reveal-delay" as string]: `${index * 85}ms` }}
-          >
-            <div className="v2-contact-index">
-              {String(index + 1).padStart(2, "0")}
-            </div>
-            <div>
-              <p>{item.label}</p>
-              <h2>{item.title}</h2>
-              <span>{item.copy}</span>
-            </div>
-            <strong>{item.cta}</strong>
-          </a>
-        ))}
+        {contactPaths.map((item, index) => {
+          const content = (
+            <>
+              <div className="v2-contact-index">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <div>
+                <p>{item.label}</p>
+                <h2>{item.title}</h2>
+                <span>{item.copy}</span>
+              </div>
+              <strong>{item.cta}</strong>
+            </>
+          );
+
+          const shared = {
+            className: "v2-contact-card",
+            "data-reveal": true,
+            style: { ["--reveal-delay" as string]: `${index * 85}ms` },
+          };
+
+          return item.external ? (
+            <a
+              key={item.label}
+              {...shared}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {content}
+            </a>
+          ) : (
+            <Link key={item.label} {...shared} href={item.href}>
+              {content}
+            </Link>
+          );
+        })}
       </div>
 
       <div className="v2-contact-console" data-reveal>
