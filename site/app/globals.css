@@ -2382,3 +2382,71 @@ a {
     transition: none;
   }
 }
+
+
+/* V2 inner pages */
+.v2-page-intro h1 span {
+  display: block;
+  color: transparent;
+  background: linear-gradient(92deg, #dfe7ff, #92b5ff 42%, #9d82ff 72%, #ff8dc8);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.v2-portfolio-page .v2-portfolio-grid {
+  margin-top: 14px;
+}
+
+.v2-portfolio-boundary {
+  margin-top: 76px;
+  padding: 34px 0;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 62px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.v2-portfolio-boundary h2 {
+  max-width: 540px;
+  margin: 8px 0 0;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2rem, 3.8vw, 3.8rem);
+  line-height: 1.06;
+  letter-spacing: -.05em;
+}
+
+.v2-portfolio-boundary p {
+  margin: 0 0 15px;
+  color: #8491a4;
+  line-height: 1.7;
+}
+
+.v2-company-detail {
+  margin-bottom: 80px;
+}
+
+.v2-readiness-table .readiness-row {
+  transition: background 160ms ease, padding 160ms ease;
+}
+
+.v2-readiness-table .readiness-row:hover {
+  padding-inline: 12px;
+  background: linear-gradient(90deg, rgba(138,167,255,.04), transparent);
+}
+
+.v2-activation-list li {
+  transition: background 160ms ease, padding 160ms ease;
+}
+
+.v2-activation-list li:hover {
+  padding-inline: 12px;
+  background: linear-gradient(90deg, rgba(138,167,255,.035), transparent);
+}
+
+@media (max-width: 760px) {
+  .v2-portfolio-boundary {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
