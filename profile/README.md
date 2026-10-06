@@ -2,39 +2,36 @@
 
 **Founded by Sedat İşkara — SMMM, MBA**
 
-Iskara Labs is Sedat İşkara's product development umbrella. The founder name is **Sedat İşkara**; **Sedat Iskara** is the ASCII spelling.
+Iskara Labs is a founder-led product studio building governed digital systems across AI, operations, research, compliance, media and real-world coordination.
 
-**Official web domain:** https://iskaralabs.co  
-**Corporate website source:** [`site/`](../site)
+**Website:** https://iskaralabs.co  
+**Founder:** https://iskaralabs.co/founder
 
-## Portfolio priorities
+## Portfolio
 
-| Overall priority | Project | Direction |
-| --- | --- | --- |
-| 2 | [Nowly](https://nowly.com.tr) | Leading project in the Iskara Labs portfolio |
-| 3 | [OfisPilot](https://ofispilot.com.tr) | Next priority within Iskara Labs |
-| Following | [OriginVox](https://originvox.com), [Qantrive](https://qantrive.com), [Conformetra](https://conformetra.com), [FoundersGPT](https://getfoundersgpt.com) | Sequence based on active work, readiness and verified progress |
+Selected Iskara Labs brands include:
 
-**ReguShield AI is the founder's first overall priority and remains independent in [regushield-ai](https://github.com/regushield-ai). It is outside the Iskara Labs portfolio.**
+- [Nowly](https://nowly.com.tr)
+- [OfisPilot](https://ofispilot.com.tr)
+- [OriginVox](https://originvox.com)
+- [Qantrive](https://qantrive.com)
+- [Conformetra](https://conformetra.com)
+- [FoundersGPT](https://getfoundersgpt.com)
 
-A priority describes the development plan; it is not a launch or availability claim.
+Shared platform capabilities are developed separately from customer-facing product identities.
 
-## Corporate status
+## Company status
 
 **Planned company: ISKARA LABS OÜ — Estonia · Incorporation in progress.**
 
-Iskara Labs is the current development brand and GitHub organization. Incorporation is not yet completed; this profile does not assert a registered entity, registry number, VAT number, address, legal operator or transfer of intellectual property.
+Iskara Labs is currently the development brand and GitHub organization. Registered legal-entity details will be published only after incorporation and verification.
 
-## Founder
+## Public repository boundary
 
-- [Sedat İşkara on GitHub](https://github.com/sedatiskara)
+This organization page exposes only information and repositories intentionally made public on GitHub. Private product repositories, private issues, private code, secrets, internal discussions and private project history are not visible to public visitors.
+
+## Links
+
+- [Corporate website](https://iskaralabs.co)
+- [Founder](https://iskaralabs.co/founder)
 - [LinkedIn](https://www.linkedin.com/in/sedatiskara/)
-- [Nowly founder profile](https://nowly.com.tr/founder)
-
-## Türkçe
-
-**Iskara Labs'ın kurucusu Sedat İşkara'dır.** Genel öncelik sırası **ReguShield → Nowly → OfisPilot** şeklindedir. ReguShield ayrı yapısını korur. Iskara Labs portföyü Nowly ile başlar; OfisPilot ve diğer projeler aktif çalışma, hazırlık ve ilerlemeye göre devreye alınır.
-
-**Planlanan şirket: ISKARA LABS OÜ — Estonia · Kuruluş aşamasında.**
-
-Resmî geliştirme markası alan adı: **https://iskaralabs.co**
