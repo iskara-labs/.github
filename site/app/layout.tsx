@@ -62,7 +62,7 @@ const structuredData = {
       name: COMPANY.founderName,
       alternateName: COMPANY.founderAlternateName,
       url: COMPANY.founderProfile,
-      sameAs: ["https://github.com/sedatiskara"],
+      sameAs: [COMPANY.founderLinkedIn, COMPANY.founderGitHub],
     },
     {
       "@type": "Organization",
