@@ -1,13 +1,7 @@
 name: Iskara Labs Site
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "site/**"
-      - ".github/workflows/iskara-labs-site.yml"
   push:
-    branches: [main]
     paths:
       - "site/**"
       - ".github/workflows/iskara-labs-site.yml"
