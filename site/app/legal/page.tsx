@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 import { COMPANY } from "@/lib/company";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Legal notice",
   description: "Pre-incorporation legal notice for the Iskara Labs website.",
-  alternates: { canonical: "/legal" },
-};
+  path: "/legal",
+});
 
 const legalSections = [
   {

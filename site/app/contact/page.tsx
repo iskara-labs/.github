@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { COMPANY } from "@/lib/company";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Contact",
   description: "Contact and public identity links for Iskara Labs.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 const contactPaths = [
   {

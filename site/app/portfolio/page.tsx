@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { PortfolioShowcase } from "@/components/PortfolioShowcase";
 import { PORTFOLIO } from "@/lib/portfolio";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Portfolio",
   description:
     "Products and shared platform work developed under the Iskara Labs brand.",
-  alternates: { canonical: "/portfolio" },
-};
+  path: "/portfolio",
+});
 
 export default function PortfolioPage() {
   return (

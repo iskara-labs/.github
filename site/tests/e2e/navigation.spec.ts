@@ -1,4 +1,26 @@
 import { expect, test } from "@playwright/test";
+import type { Page } from "@playwright/test";
+
+const runtimeErrors = new WeakMap<Page, string[]>();
+
+test.beforeEach(async ({ page }) => {
+  const errors: string[] = [];
+  runtimeErrors.set(page, errors);
+
+  page.on("pageerror", (error) => {
+    errors.push(`pageerror: ${error.message}`);
+  });
+
+  page.on("console", (message) => {
+    if (message.type() === "error") {
+      errors.push(`console.error: ${message.text()}`);
+    }
+  });
+});
+
+test.afterEach(async ({ page }) => {
+  expect(runtimeErrors.get(page) ?? []).toEqual([]);
+});
 
 const routes = [
   ["/", /Build the signal|living systems/i],

@@ -77,3 +77,19 @@ for (const source of [founderPage, companySource, rootLayout]) {
 }
 assert.match(founderPage, /COMPANY\.github/);
 assert.match(founderPage, /Iskara Labs GitHub/);
+
+
+const metadataHelper = read("lib/metadata.ts");
+assert.match(metadataHelper, /openGraph:/, "route-specific social metadata must define Open Graph");
+assert.match(metadataHelper, /twitter:/, "route-specific social metadata must define Twitter cards");
+for (const [file, route] of [
+  ["app/portfolio/page.tsx", "/portfolio"],
+  ["app/company/page.tsx", "/company"],
+  ["app/contact/page.tsx", "/contact"],
+  ["app/legal/page.tsx", "/legal"],
+  ["app/founder/page.tsx", "/founder"],
+]) {
+  const source = read(file);
+  assert.match(source, /buildPageMetadata/, `${file} must use route-specific social metadata`);
+  assert.ok(source.includes(`path: "${route}"`), `${file} must publish its own canonical/social URL`);
+}
