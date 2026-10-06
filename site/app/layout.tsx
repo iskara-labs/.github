@@ -1,9 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { DM_Sans, Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ExperienceLayer } from "@/components/ExperienceLayer";
 import { COMPANY } from "@/lib/company";
 import "./globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 const publicIndexingEnabled =
   process.env.VERCEL_ENV === "production" &&
@@ -89,7 +102,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${dmSans.variable} ${manrope.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -99,8 +112,11 @@ export default function RootLayout({
         <div className="ambient ambient-one" aria-hidden="true" />
         <div className="ambient ambient-two" aria-hidden="true" />
         <ExperienceLayer />
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <SiteFooter />
       </body>
     </html>

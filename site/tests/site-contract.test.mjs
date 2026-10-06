@@ -44,3 +44,18 @@ assert.doesNotMatch(profile, /Nowly founder profile/);
 assert.match(profile, /Private product repositories/);
 
 console.log("Iskara Labs site contracts: PASS");
+
+
+const layout = read("app/layout.tsx");
+assert.match(layout, /Skip to content/);
+assert.match(layout, /id="main-content"/);
+assert.match(layout, /DM_Sans/);
+assert.match(layout, /Manrope/);
+
+const header = read("components/SiteHeader.tsx");
+assert.match(header, /usePathname/);
+assert.match(header, /aria-current/);
+
+const polishedCss = read("app/globals.css");
+assert.doesNotMatch(polishedCss, /fonts\.googleapis\.com/);
+assert.match(polishedCss, /\.skip-link/);
