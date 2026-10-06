@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { COMPANY, LEGAL_READINESS } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -50,14 +51,9 @@ export default function CompanyPage() {
             brand. The operating model is founder-led today and structured to support
             a compact core team as the company is incorporated and scales.
           </p>
-          <a
-            className="text-link"
-            href={COMPANY.founderProfile}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Verified founder profile →
-          </a>
+          <Link className="text-link" href={COMPANY.founderPath}>
+            Founder profile →
+          </Link>
         </div>
 
         <div className="v2-company-console" aria-label="Planned company structure">

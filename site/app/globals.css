@@ -2648,3 +2648,433 @@ a {
     gap: 14px;
   }
 }
+
+
+/* ═══════════════════════════════════════════════════
+   V2.2 — route safety, founder, marquee, mobile hardening
+   ═══════════════════════════════════════════════════ */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main {
+  min-width: 0;
+}
+
+.main-nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.founder-link {
+  min-height: 44px;
+}
+
+.signal-strip {
+  width: 100%;
+  max-width: 100vw;
+  contain: paint;
+}
+
+.signal-track {
+  display: flex;
+  width: max-content;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.signal-group {
+  display: flex;
+  flex: none;
+  min-width: max-content;
+}
+
+@keyframes signal-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.founder-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(330px, .85fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.founder-profile-panel {
+  position: sticky;
+  top: 118px;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 78% 6%, rgba(138,167,255,.15), transparent 14rem),
+    linear-gradient(150deg, rgba(16,22,35,.94), rgba(7,11,18,.94));
+  box-shadow: 0 36px 90px rgba(0,0,0,.28);
+}
+
+.founder-profile-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 0 44%, rgba(255,255,255,.025) 51%, transparent 58%);
+}
+
+.founder-monogram {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(138,167,255,.23);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.13), transparent 30%),
+    rgba(107,127,229,.1);
+  color: #dfe6ff;
+  font-family: "Manrope", sans-serif;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -.04em;
+}
+
+.founder-profile-copy {
+  position: relative;
+  z-index: 1;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-profile-copy > span {
+  color: #69778c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.founder-profile-copy > strong {
+  margin-top: 8px;
+  font-family: "Manrope", sans-serif;
+  font-size: 28px;
+  letter-spacing: -.04em;
+}
+
+.founder-profile-copy > small {
+  margin-top: 5px;
+  color: #8b98aa;
+}
+
+.founder-facts {
+  position: relative;
+  z-index: 1;
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.founder-facts > div {
+  min-height: 66px;
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 16px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.founder-facts span {
+  color: #65738a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.founder-facts strong {
+  color: #d8dfeb;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.founder-principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.founder-principles article {
+  min-height: 270px;
+  padding: 28px;
+  border-right: 1px solid var(--line);
+}
+
+.founder-principles article:first-child {
+  padding-left: 0;
+}
+
+.founder-principles article:last-child {
+  border-right: 0;
+}
+
+.founder-principles article > span {
+  color: #59677d;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.founder-principles h3 {
+  margin: 46px 0 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 23px;
+  letter-spacing: -.035em;
+}
+
+.founder-principles p {
+  margin: 12px 0 0;
+  color: #7f8da1;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.founder-company-note {
+  margin-top: 76px;
+  padding: 34px 0;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 62px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.founder-company-note h2 {
+  max-width: 540px;
+  margin: 8px 0 0;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2rem, 3.8vw, 3.8rem);
+  line-height: 1.06;
+  letter-spacing: -.05em;
+}
+
+.founder-company-note > div:last-child > p {
+  margin: 0 0 18px;
+  color: #8491a4;
+  line-height: 1.72;
+}
+
+@media (max-width: 900px) {
+  .founder-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .founder-profile-panel {
+    position: static;
+  }
+
+  .founder-principles {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-principles article,
+  .founder-principles article:first-child {
+    min-height: auto;
+    padding: 26px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .founder-principles article:last-child {
+    border-bottom: 0;
+  }
+
+  .founder-principles h3 {
+    margin-top: 22px;
+  }
+
+  .founder-company-note {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 760px) {
+  .signal-strip::before,
+  .signal-strip::after {
+    width: 48px;
+  }
+
+  .signal-item {
+    min-height: 50px;
+    padding-inline: 18px;
+  }
+
+  .v2-hero-visual {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .constellation-shell {
+    max-width: 100%;
+    border-radius: 26px;
+  }
+
+  .v2-company-shell {
+    padding: 24px;
+    border-radius: 26px;
+  }
+
+  .v2-product-card {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding-top: 64px;
+    padding-bottom: 82px;
+  }
+
+  .page-intro {
+    margin-bottom: 42px;
+  }
+
+  .page-intro h1,
+  .v2-page-intro h1 {
+    font-size: clamp(2.7rem, 14vw, 4.25rem);
+    overflow-wrap: anywhere;
+  }
+
+  .main-nav a {
+    padding-inline: 7px;
+    font-size: 11px;
+  }
+
+  .v2-hero {
+    padding-top: 54px;
+  }
+
+  .v2-hero h1 {
+    font-size: clamp(3rem, 16vw, 4.8rem);
+  }
+
+  .v2-hero-metrics {
+    gap: 0;
+  }
+
+  .v2-hero-metrics > div,
+  .v2-hero-metrics > div:first-child {
+    padding-inline: 9px;
+  }
+
+  .signal-strip::before,
+  .signal-strip::after {
+    width: 24px;
+  }
+
+  .signal-item {
+    padding-inline: 15px;
+  }
+
+  .signal-item small {
+    display: none;
+  }
+
+  .v2-product-card {
+    min-height: 320px;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .v2-product-body {
+    margin-top: 36px;
+  }
+
+  .v2-company-shell {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .constellation-readout {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .founder-profile-panel {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .founder-facts > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding-block: 12px;
+  }
+
+  .v2-footer-wordmark {
+    flex-wrap: wrap;
+    gap: 8px;
+    line-height: .95;
+  }
+
+  .v2-footer-wordmark span,
+  .v2-footer-wordmark strong {
+    font-size: clamp(2rem, 14vw, 3rem);
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-copy {
+    display: none;
+  }
+
+  .header-inner {
+    gap: 8px;
+  }
+
+  .main-nav {
+    margin-left: auto;
+  }
+
+  .main-nav a {
+    padding-inline: 6px;
+    font-size: 10.5px;
+  }
+
+  .constellation-readout {
+    grid-template-columns: 1fr;
+  }
+
+  .constellation-readout a {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .signal-track {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .signal-group {
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

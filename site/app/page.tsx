@@ -200,15 +200,10 @@ export default function HomePage() {
               that can compound shared capabilities over time.
             </p>
           </div>
-          <a
-            className="founder-link"
-            href={COMPANY.founderProfile}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Link className="founder-link" href={COMPANY.founderPath}>
             Founder profile
-            <span aria-hidden="true">↗</span>
-          </a>
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 
