@@ -28,8 +28,8 @@ export function SiteFooter() {
           <Link href="/company">Company</Link>
           <Link href="/legal">Legal notice</Link>
           <Link href="/contact">Contact</Link>
-          <a href={COMPANY.github} target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href={COMPANY.founderProfile} target="_blank" rel="noreferrer">Founder ↗</a>
+          <a href={COMPANY.github} target="_blank" rel="noreferrer">Public GitHub ↗</a>
+          <Link href={COMPANY.founderPath}>Founder</Link>
         </div>
       </div>
 
