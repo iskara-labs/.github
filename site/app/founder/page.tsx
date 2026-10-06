@@ -69,11 +69,11 @@ export default function FounderPage() {
             </a>
             <a
               className="button button-ghost"
-              href={COMPANY.founderGitHub}
+              href={COMPANY.github}
               target="_blank"
               rel="noreferrer"
             >
-              Public GitHub ↗
+              Iskara Labs GitHub ↗
             </a>
           </div>
         </div>
