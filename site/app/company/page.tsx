@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { COMPANY, LEGAL_READINESS } from "@/lib/company";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Company",
   description:
     "Iskara Labs company structure, founder identity and Estonia incorporation readiness.",
-  alternates: { canonical: "/company" },
-};
+  path: "/company",
+});
 
 const activationItems = [
   "Replace planned legal name with the verified registered name.",
