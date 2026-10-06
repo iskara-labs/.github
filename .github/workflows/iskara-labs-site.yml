@@ -43,8 +43,8 @@ jobs:
       - name: Verify contracts, types and production build
         run: npm run check
 
-      - name: Install Chromium for browser regression
-        run: npx playwright install --with-deps chromium
+      - name: Install Chromium and WebKit for browser regression
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Browser regression — routes and responsive layout
         run: npm run test:e2e
