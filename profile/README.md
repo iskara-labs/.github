@@ -4,7 +4,8 @@
 
 Iskara Labs is Sedat İşkara's product development umbrella. The founder name is **Sedat İşkara**; **Sedat Iskara** is the ASCII spelling.
 
-**Official web domain:** https://iskaralabs.co
+**Official web domain:** https://iskaralabs.co  
+**Corporate website source:** [`site/`](../site)
 
 ## Portfolio priorities
 
