@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ExperienceLayer } from "@/components/ExperienceLayer";
 import { COMPANY } from "@/lib/company";
 import "./globals.css";
 
@@ -97,6 +98,7 @@ export default function RootLayout({
         />
         <div className="ambient ambient-one" aria-hidden="true" />
         <div className="ambient ambient-two" aria-hidden="true" />
+        <ExperienceLayer />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
