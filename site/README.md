@@ -41,7 +41,7 @@ npm run dev
 npm run check
 ```
 
-CI gate: `.github/workflows/iskara-labs-site.yml` runs the same typecheck + production build on every site pull request.
+CI gate: `.github/workflows/iskara-labs-site.yml` runs the same typecheck + production build on every site pull request. The CI workflow itself is versioned on the default branch so pull requests are evaluated by a trusted base workflow.
 
 ## Vercel
 
