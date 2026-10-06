@@ -54,10 +54,10 @@ Target setup:
 - Production domain: **iskaralabs.co**
 - Production branch: **main**
 
-Public indexing is fail-closed. Set:
+Public indexing is environment-aware:
 
-```
-NEXT_PUBLIC_PUBLIC_SITE_READY=true
-```
+- Vercel **Production** is indexable after the custom-domain cutover.
+- Preview and Development stay `noindex` / disallow.
+- Emergency override: set `NEXT_PUBLIC_PUBLIC_SITE_READY=false` to close indexing again without changing code.
 
-for **Production only**, and only after `iskaralabs.co` is attached, DNS is verified, SSL is active and the production smoke test passes. Until then the site emits `noindex` / disallow rules.
+The production indexing switch was activated only after `iskaralabs.co` and `www.iskaralabs.co` showed Valid Configuration in Vercel and the apex domain was verified on Vercel DNS.
