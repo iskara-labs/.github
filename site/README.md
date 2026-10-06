@@ -41,6 +41,8 @@ npm run dev
 npm run check
 ```
 
+CI gate: `.github/workflows/iskara-labs-site.yml` runs the same typecheck + production build on every site pull request.
+
 ## Vercel
 
 Target setup:
