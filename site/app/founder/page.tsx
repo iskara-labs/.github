@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { COMPANY } from "@/lib/company";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Founder",
   description:
     "Sedat İşkara, founder of Iskara Labs — founder-led product building across finance, operations, AI and governed digital systems.",
-  alternates: { canonical: "/founder" },
-};
+  path: "/founder",
+});
 
 const founderFacts = [
   ["Role", "Founder · Iskara Labs"],
