@@ -34,7 +34,6 @@ export const PORTFOLIO: PortfolioItem[] = [
     stage: "Staged product",
     description:
       "An AI-assisted content, approval and growth workspace designed around a founder's authentic voice and human-controlled publishing.",
-    note: "Previously developed under the FounderOS AI working name.",
   },
   {
     name: "Qantrive",
@@ -52,7 +51,6 @@ export const PORTFOLIO: PortfolioItem[] = [
     stage: "Staged platform",
     description:
       "Industrial compliance intelligence for product evidence, deterministic assessment and market-readiness decisions.",
-    note: "Previously developed under the VeriFactory working name.",
   },
   {
     name: "FoundersGPT",
