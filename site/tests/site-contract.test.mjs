@@ -59,3 +59,11 @@ assert.match(header, /aria-current/);
 const polishedCss = read("app/globals.css");
 assert.doesNotMatch(polishedCss, /fonts\.googleapis\.com/);
 assert.match(polishedCss, /\.skip-link/);
+
+
+const portfolioSource = read("lib/portfolio.ts");
+// Public corporate surface must use only current product identities; legacy
+// working names remain private/history where they belong.
+for (const legacy of ["FounderOS", "QuantPilot", "VeriFactory"]) {
+  assert.doesNotMatch(portfolioSource, new RegExp(legacy), "legacy working names must not leak into the public portfolio");
+}
