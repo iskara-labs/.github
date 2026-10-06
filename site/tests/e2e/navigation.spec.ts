@@ -5,7 +5,7 @@ const routes = [
   ["/portfolio", /Different markets/i],
   ["/company", /Estonia-ready/i],
   ["/contact", /Start with context/i],
-  ["/legal", /Pre-incorporation/i],
+  ["/legal", /Precise now/i],
   ["/founder", /Sedat İşkara/i],
 ] as const;
 
