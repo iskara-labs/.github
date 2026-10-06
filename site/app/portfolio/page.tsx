@@ -23,7 +23,7 @@ export default function PortfolioPage() {
 
       <div className="portfolio-list">
         {PORTFOLIO.map((item, index) => (
-          <article className="portfolio-row" id={item.name.toLowerCase()} key={item.name}>
+          <article className="portfolio-row" id={item.name.toLowerCase().replaceAll(" ", "-")} key={item.name}>
             <div className="portfolio-row-index">
               {String(index + 1).padStart(2, "0")}
             </div>
