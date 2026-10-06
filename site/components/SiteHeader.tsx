@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/portfolio", label: "Portfolio" },
@@ -7,10 +10,17 @@ const links = [
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
   return (
     <header className="site-header v2-header">
       <div className="shell header-inner">
-        <Link href="/" className="brand" aria-label="Iskara Labs home">
+        <Link
+          href="/"
+          className="brand"
+          aria-label="Iskara Labs home"
+          aria-current={pathname === "/" ? "page" : undefined}
+        >
           <span className="brand-mark v2-brand-mark" aria-hidden="true">
             <span>IL</span>
           </span>
@@ -21,11 +31,20 @@ export function SiteHeader() {
         </Link>
 
         <nav className="main-nav" aria-label="Primary navigation">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const active =
+              pathname === link.href || pathname.startsWith(link.href + "/");
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={active ? "is-active" : undefined}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="header-signal" aria-label="Iskara Labs status">
