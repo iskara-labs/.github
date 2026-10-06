@@ -75,7 +75,7 @@ const structuredData = {
       name: COMPANY.founderName,
       alternateName: COMPANY.founderAlternateName,
       url: COMPANY.founderProfile,
-      sameAs: [COMPANY.founderLinkedIn, COMPANY.founderGitHub],
+      sameAs: [COMPANY.founderLinkedIn],
     },
     {
       "@type": "Organization",

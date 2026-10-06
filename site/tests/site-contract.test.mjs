@@ -67,3 +67,13 @@ const portfolioSource = read("lib/portfolio.ts");
 for (const legacy of ["FounderOS", "QuantPilot", "VeriFactory"]) {
   assert.doesNotMatch(portfolioSource, new RegExp(legacy), "legacy working names must not leak into the public portfolio");
 }
+
+
+const founderPage = read("app/founder/page.tsx");
+const companySource = read("lib/company.ts");
+const rootLayout = read("app/layout.tsx");
+for (const source of [founderPage, companySource, rootLayout]) {
+  assert.doesNotMatch(source, /github\.com\/sedatiskara/, "personal GitHub should not be exposed by the corporate site");
+}
+assert.match(founderPage, /COMPANY\.github/);
+assert.match(founderPage, /Iskara Labs GitHub/);

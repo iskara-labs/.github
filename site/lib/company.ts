@@ -6,7 +6,6 @@ export const COMPANY = {
   founderProfile: "https://iskaralabs.co/founder",
   founderPath: "/founder",
   founderLinkedIn: "https://www.linkedin.com/in/sedatiskara/",
-  founderGitHub: "https://github.com/sedatiskara",
   github: "https://github.com/iskara-labs",
   plannedLegalName: "ISKARA LABS OÜ",
   plannedJurisdiction: "Estonia",
