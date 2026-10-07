@@ -1,8 +1,10 @@
 # Iskara Labs
 
-**Founded by Sedat İşkara — SMMM, MBA**
+**Founded by Sedat İşkara — SMMM, MBA · Founder & Product Builder**
 
 Iskara Labs is a founder-led product studio building governed digital systems across AI, operations, research, compliance, media and real-world coordination.
+
+Sedat's professional base is finance, accounting and business operations. Alongside his SMMM and MBA background, he has pursued structured technical training across software development, databases, networking, information security, cryptology, big data, machine learning and AI-agent development. The positioning is deliberate: technically hands-on founder and product builder, not a claim of a formal software-engineering degree.
 
 **Website:** https://iskaralabs.co  
 **Founder:** https://iskaralabs.co/founder
