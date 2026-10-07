@@ -5,15 +5,15 @@ import { COMPANY } from "@/lib/company";
 export const metadata: Metadata = {
   title: "Founder",
   description:
-    "Sedat İşkara, founder of Iskara Labs — founder-led product building across finance, operations, AI and governed digital systems.",
+    "Sedat İşkara, founder of Iskara Labs — SMMM, MBA and founder-product builder working across finance, operations, software, data and AI systems.",
   alternates: { canonical: "/founder" },
 };
 
 const founderFacts = [
   ["Role", "Founder · Iskara Labs"],
-  ["Background", "SMMM · MBA"],
+  ["Background", "SMMM · MBA · applied software & AI"],
   ["Operating model", "Founder-led · governed delivery"],
-  ["Focus", "Product systems · AI · operations · compliance"],
+  ["Focus", "Finance · regulation · product systems · AI"],
 ] as const;
 
 const principles = [
@@ -53,10 +53,12 @@ export default function FounderPage() {
           </h1>
           <p>
             Iskara Labs is being built around direct founder involvement, domain
-            expertise and controlled product delivery. The portfolio spans different
-            markets, but the operating expectation stays consistent: understand the
-            problem deeply, make system boundaries explicit and keep public claims
-            aligned with verified reality.
+            expertise and controlled product delivery. Sedat combines an SMMM and MBA
+            background with years of structured technical learning and hands-on product
+            building across software, data, security, machine learning and AI systems.
+            The portfolio spans different markets, but the operating expectation stays
+            consistent: understand the problem deeply, make system boundaries explicit
+            and keep public claims aligned with verified reality.
           </p>
           <div className="hero-actions">
             <a
@@ -115,6 +117,25 @@ export default function FounderPage() {
             <p>{principle.copy}</p>
           </article>
         ))}
+      </div>
+
+
+      <div className="founder-company-note" data-reveal>
+        <div>
+          <p className="section-kicker">Applied technical path</p>
+          <h2>Finance discipline. Technical proximity. Founder-level product ownership.</h2>
+        </div>
+        <div>
+          <p>
+            Alongside his SMMM and MBA background, Sedat has continued structured
+            technical training through BTK Akademi across software development,
+            C# and ASP.NET Core Web API, T-SQL and databases, algorithms and data
+            structures, networking and operating systems, information security and
+            cryptology, big data, Python-based machine learning and AI-agent development.
+            This is presented as applied technical development — not as a claim of a
+            formal computer-science or software-engineering degree.
+          </p>
+        </div>
       </div>
 
       <div className="founder-company-note" data-reveal>
