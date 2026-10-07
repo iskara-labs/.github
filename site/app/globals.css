@@ -3149,3 +3149,25 @@ main {
   color: var(--muted);
   line-height: 1.7;
 }
+
+
+/* V2.5 — founder nav + narrow header hardening */
+@media (max-width: 520px) {
+  .v2-header .brand-copy {
+    display: none;
+  }
+
+  .v2-header .header-inner {
+    gap: 10px;
+  }
+
+  .v2-header .main-nav {
+    margin-left: auto;
+    min-width: 0;
+  }
+
+  .v2-header .main-nav a {
+    padding-inline: 7px;
+    font-size: 11px;
+  }
+}
