@@ -97,7 +97,7 @@ test("mobile navigation remains tappable and inside the viewport", async ({ page
 
   const navLinks = page.getByRole("navigation").getByRole("link");
   const count = await navLinks.count();
-  expect(count).toBe(3);
+  expect(count).toBe(4);
 
   for (let i = 0; i < count; i += 1) {
     const box = await navLinks.nth(i).boundingBox();
