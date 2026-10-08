@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "/portfolio", label: "Portfolio" },
@@ -12,9 +13,24 @@ const links = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  // Close the mobile sheet on navigation and on Escape.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <header className="site-header v2-header">
+    <header className={`site-header v2-header p3-header${open ? " is-open" : ""}`}>
       <div className="shell header-inner">
         <Link
           href="/"
@@ -27,11 +43,29 @@ export function SiteHeader() {
           </span>
           <span className="brand-copy">
             <strong>Iskara Labs</strong>
-            <small>Product Studio / EU</small>
+            <small>Applied AI studio</small>
           </span>
         </Link>
 
-        <nav className="main-nav" aria-label="Primary navigation">
+        <button
+          type="button"
+          className="p3-menu-button"
+          aria-expanded={open}
+          aria-controls="primary-navigation"
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="p3-menu-icon" aria-hidden="true">
+            <i />
+            <i />
+          </span>
+          {open ? "Close" : "Menu"}
+        </button>
+
+        <nav
+          className="main-nav"
+          id="primary-navigation"
+          aria-label="Primary navigation"
+        >
           {links.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(link.href + "/");
@@ -47,11 +81,6 @@ export function SiteHeader() {
             );
           })}
         </nav>
-
-        <div className="header-signal" aria-label="Iskara Labs status">
-          <i aria-hidden="true" />
-          <span>BUILDING</span>
-        </div>
       </div>
     </header>
   );

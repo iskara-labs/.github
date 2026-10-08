@@ -29,6 +29,14 @@ async function expectHealthyPage(page: import("@playwright/test").Page) {
   expect(overflow).toBeLessThanOrEqual(1);
 }
 
+async function openMenuIfCollapsed(page: import("@playwright/test").Page) {
+  const menu = page.getByRole("button", { name: /^(Menu|Close)$/ });
+  if (await menu.isVisible()) {
+    if ((await menu.getAttribute("aria-expanded")) !== "true") await menu.click();
+    await expect(menu).toHaveAttribute("aria-expanded", "true");
+  }
+}
+
 test("client navigation never blanks the route body", async ({ page }) => {
   await page.goto("/");
   await expectHealthyPage(page);
@@ -38,6 +46,7 @@ test("client navigation never blanks the route body", async ({ page }) => {
     ["Company", "/company", /Estonia-ready/i],
     ["Contact", "/contact", /Start with context/i],
   ] as const) {
+    await openMenuIfCollapsed(page);
     await page.getByRole("navigation").getByRole("link", { name: label }).click();
     await expect(page).toHaveURL(new RegExp(path.replace("/", "\\/") + "$"));
     await expect(page.getByRole("heading", { level: 1 })).toContainText(heading);
@@ -65,35 +74,48 @@ test("founder profile stays inside Iskara Labs", async ({ page }) => {
   await expectHealthyPage(page);
 });
 
-test("portfolio marquee is clipped and cannot widen the page", async ({ page }) => {
+test("portfolio rail lists each product once and cannot widen the page", async ({ page }) => {
   await page.goto("/");
-  const strip = page.locator(".signal-strip");
-  await expect(strip).toBeVisible();
+  const rail = page.getByRole("region", { name: "Portfolio product sites" });
+  await expect(rail).toBeVisible();
+
+  const names = await rail.locator(".signal-cell strong").allTextContents();
+  expect(names.length).toBe(6);
+  expect(new Set(names).size).toBe(names.length);
 
   const metrics = await page.evaluate(() => {
-    const strip = document.querySelector<HTMLElement>(".signal-strip");
-    const track = document.querySelector<HTMLElement>(".signal-track");
-    if (!strip || !track) return null;
-    const rect = strip.getBoundingClientRect();
-    return {
-      stripLeft: rect.left,
-      stripRight: rect.right,
-      viewport: window.innerWidth,
-      trackWidth: track.scrollWidth,
-      docWidth: document.documentElement.scrollWidth,
-    };
+    const viewport = window.innerWidth;
+    const cells = [...document.querySelectorAll<HTMLElement>(".signal-cell a")].map((el) => {
+      const r = el.getBoundingClientRect();
+      return { left: r.left, right: r.right, height: r.height };
+    });
+    return { viewport, cells, docWidth: document.documentElement.scrollWidth };
   });
 
-  expect(metrics).not.toBeNull();
-  expect(metrics!.stripLeft).toBeGreaterThanOrEqual(-1);
-  expect(metrics!.stripRight).toBeLessThanOrEqual(metrics!.viewport + 1);
-  expect(metrics!.trackWidth).toBeGreaterThan(metrics!.viewport);
-  expect(metrics!.docWidth).toBeLessThanOrEqual(metrics!.viewport + 1);
+  for (const cell of metrics.cells) {
+    expect(cell.left).toBeGreaterThanOrEqual(-1);
+    expect(cell.right).toBeLessThanOrEqual(metrics.viewport + 1);
+    expect(cell.height).toBeGreaterThanOrEqual(44);
+  }
+  expect(metrics.docWidth).toBeLessThanOrEqual(metrics.viewport + 1);
+});
+
+test("orrery labels stay inside the viewport", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  const overflow = await page.evaluate(() => {
+    const viewport = document.documentElement.clientWidth;
+    return [...document.querySelectorAll<HTMLElement>(".orrery-node button")]
+      .map((el) => el.getBoundingClientRect())
+      .filter((r) => r.left < -1 || r.right > viewport + 1).length;
+  });
+  expect(overflow).toBe(0);
 });
 
 test("mobile navigation remains tappable and inside the viewport", async ({ page, isMobile }) => {
   test.skip(!isMobile, "mobile-only assertion");
   await page.goto("/");
+  await openMenuIfCollapsed(page);
 
   const navLinks = page.getByRole("navigation").getByRole("link");
   const count = await navLinks.count();
