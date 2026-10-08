@@ -6,11 +6,27 @@ export type PortfolioItem = {
   description: string;
   note?: string;
   href?: string;
+  /** Where the product sits in the studio's release orbit. Drives the home orrery. */
+  orbit: PortfolioOrbit;
+  /** Brand tone used for the product's signal colour across the studio site. */
+  tone: PortfolioTone;
+};
+
+export type PortfolioOrbit = "market" | "prerelease" | "staged" | "foundation";
+export type PortfolioTone = "violet" | "cyan" | "rose" | "amber" | "emerald" | "blue" | "slate";
+
+export const ORBIT_LABEL: Record<PortfolioOrbit, string> = {
+  market: "In market",
+  prerelease: "Pre-release",
+  staged: "Staged",
+  foundation: "Shared foundation",
 };
 
 export const PORTFOLIO: PortfolioItem[] = [
   {
     name: "Nowly",
+    orbit: "market",
+    tone: "violet",
     category: "Consumer product",
     domain: "nowly.com.tr",
     stage: "Active product",
@@ -20,6 +36,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     name: "OfisPilot",
+    orbit: "prerelease",
+    tone: "cyan",
     category: "Practice operations",
     domain: "ofispilot.com.tr",
     stage: "Release candidate",
@@ -29,6 +47,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     name: "OriginVox",
+    orbit: "staged",
+    tone: "rose",
     category: "Founder growth",
     domain: "originvox.com",
     stage: "Staged product",
@@ -37,6 +57,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     name: "Qantrive",
+    orbit: "prerelease",
+    tone: "amber",
     category: "Research intelligence",
     domain: "qantrive.com",
     stage: "Research platform",
@@ -46,6 +68,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     name: "Conformetra",
+    orbit: "staged",
+    tone: "emerald",
     category: "Industrial compliance",
     domain: "conformetra.com",
     stage: "Staged platform",
@@ -54,6 +78,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     name: "FoundersGPT",
+    orbit: "market",
+    tone: "blue",
     category: "Media & founder education",
     domain: "getfoundersgpt.com",
     stage: "Active media brand",
@@ -62,6 +88,8 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     name: "Universal AI Platform",
+    orbit: "foundation",
+    tone: "slate",
     category: "Shared infrastructure",
     domain: null,
     stage: "Foundation",

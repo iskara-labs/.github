@@ -1,60 +1,70 @@
-import { PORTFOLIO } from "@/lib/portfolio";
+import { ORBIT_LABEL, PORTFOLIO } from "@/lib/portfolio";
 
-const productTone: Record<string, string> = {
-  Nowly: "violet",
-  OfisPilot: "cyan",
-  OriginVox: "rose",
-  Qantrive: "amber",
-  Conformetra: "emerald",
-  FoundersGPT: "blue",
-  "Universal AI Platform": "slate",
-};
-
+/**
+ * Six products on an even grid, with the shared platform drawn as the layer
+ * beneath them — because that is what it is. No orphan cards, no bento gaps.
+ */
 export function PortfolioShowcase() {
+  const products = PORTFOLIO.filter((item) => item.orbit !== "foundation");
+  const foundation = PORTFOLIO.find((item) => item.orbit === "foundation");
+
   return (
-    <div className="v2-portfolio-grid">
-      {PORTFOLIO.map((item, index) => {
-        const tone = productTone[item.name] ?? "slate";
-        return (
-          <article
-            className={`v2-product-card tone-${tone}`}
+    <div className="pf">
+      <ul className="pf-grid">
+        {products.map((item, index) => (
+          <li
+            className={`pf-card tone-${item.tone}`}
             key={item.name}
             data-reveal
-            style={{ ["--reveal-delay" as string]: `${Math.min(index * 70, 280)}ms` }}
+            style={{ ["--reveal-delay" as string]: `${Math.min(index * 60, 300)}ms` }}
           >
-            <div className="v2-product-glow" aria-hidden="true" />
-            <div className="v2-product-top">
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <span className="live-pill">
+            <div className="pf-card-head">
+              <span className="pf-orbit">
                 <i aria-hidden="true" />
-                {item.stage}
+                {ORBIT_LABEL[item.orbit]}
               </span>
+              <span className="pf-stage">{item.stage}</span>
             </div>
-            <div className="v2-product-body">
-              <p>{item.category}</p>
-              <h3>{item.name}</h3>
-              <div className="product-domain-line">
-                {item.domain ? (
-                  <a
-                    href={`https://${item.domain}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {item.domain} ↗
-                  </a>
-                ) : (
-                  <span>Shared infrastructure</span>
-                )}
-              </div>
-              <p className="v2-product-description">{item.description}</p>
+            <h3>{item.name}</h3>
+            <p className="pf-category">{item.category}</p>
+            <p className="pf-description">{item.description}</p>
+            {item.note ? <p className="pf-note">{item.note}</p> : null}
+            {item.domain ? (
+              <a
+                className="pf-link"
+                href={`https://${item.domain}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>{item.domain}</span>
+                <span aria-hidden="true" className="pf-link-arrow">↗</span>
+                <span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+
+      {foundation ? (
+        <div className="pf-foundation" data-reveal>
+          <div className="pf-foundation-rule" aria-hidden="true">
+            {products.map((item) => (
+              <span key={item.name} className={`tone-${item.tone}`} />
+            ))}
+          </div>
+          <div className="pf-foundation-body">
+            <div>
+              <span className="pf-orbit">
+                <i aria-hidden="true" />
+                {ORBIT_LABEL[foundation.orbit]}
+              </span>
+              <h3>{foundation.name}</h3>
             </div>
-            <div className="v2-product-footer">
-              <span>Iskara Labs / {item.category}</span>
-              <span aria-hidden="true">↗</span>
-            </div>
-          </article>
-        );
-      })}
+            <p>{foundation.description}</p>
+            {foundation.note ? <p className="pf-note">{foundation.note}</p> : null}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

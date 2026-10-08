@@ -31,7 +31,22 @@ for (const source of [home, companyPage, footer, contact]) {
 
 const signal = read("components/SignalStrip.tsx");
 assert.match(signal, /signal-group/);
-assert.match(signal, /aria-hidden/);
+// The rail renders every product exactly once: no duplicated marquee copy.
+assert.doesNotMatch(signal, /group\((true|false)\)/);
+assert.doesNotMatch(signal, /signal-track/);
+
+const premiumCss = read("app/premium.css");
+assert.match(premiumCss, /prefers-reduced-motion: reduce/);
+assert.match(premiumCss, /\.orrery-node\.is-edge/);
+assert.match(read("app/layout.tsx"), /import "\.\/premium\.css"/);
+
+const orrery = read("components/PortfolioOrrery.tsx");
+assert.match(orrery, /prefers-reduced-motion/);
+assert.match(orrery, /aria-pressed/);
+// Deliberate default: the orrery opens on the studio overview, not an arbitrary product.
+assert.match(orrery, /const SEQUENCE[^;]*\[\s*null,/);
+assert.match(orrery, /useState\(0\)/);
+assert.match(orrery, /Studio overview/);
 
 const css = read("app/globals.css");
 assert.match(css, /overflow-x:\s*clip/);

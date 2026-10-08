@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { ExperienceLayer } from "@/components/ExperienceLayer";
 import { COMPANY } from "@/lib/company";
 import "./globals.css";
+import "./premium.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
