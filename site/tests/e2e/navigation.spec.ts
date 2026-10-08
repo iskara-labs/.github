@@ -102,6 +102,7 @@ test("portfolio rail lists each product once and cannot widen the page", async (
 
 test("orrery labels stay inside the viewport", async ({ page }) => {
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
   const overflow = await page.evaluate(() => {
     const viewport = document.documentElement.clientWidth;
     return [...document.querySelectorAll<HTMLElement>(".orrery-node button")]

@@ -38,6 +38,9 @@ assert.doesNotMatch(signal, /signal-track/);
 const premiumCss = read("app/premium.css");
 assert.match(premiumCss, /prefers-reduced-motion: reduce/);
 assert.match(premiumCss, /\.orrery-node\.is-edge/);
+// The display token must resolve where next/font defines --font-manrope (<body>), not :root.
+assert.match(premiumCss, /body\s*\{\s*--p3-display:\s*var\(--font-manrope\)/);
+assert.doesNotMatch(premiumCss, /:root\s*\{[^}]*--p3-display/);
 assert.match(read("app/layout.tsx"), /import "\.\/premium\.css"/);
 
 const orrery = read("components/PortfolioOrrery.tsx");
