@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../site/public/brand/logo-horizontal-color.svg">
+  <img alt="Iskara Labs" src="../site/public/brand/logo-horizontal-light.svg" width="420">
+</picture>
+
 # Iskara Labs
 
 **Founded by Sedat İşkara — SMMM, MBA · Founder & Product Builder**

@@ -39,7 +39,7 @@ export function SiteHeader() {
           aria-current={pathname === "/" ? "page" : undefined}
         >
           <span className="brand-mark v2-brand-mark" aria-hidden="true">
-            <span>IL</span>
+            <img src="/brand/mark-color.svg" alt="" width={28} height={28} style={{ display: "block" }} />
           </span>
           <span className="brand-copy">
             <strong>Iskara Labs</strong>
