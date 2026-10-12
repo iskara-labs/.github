@@ -83,6 +83,7 @@ const structuredData = {
       "@id": COMPANY.domain + "/#brand",
       name: COMPANY.brandName,
       url: COMPANY.domain,
+      logo: COMPANY.domain + "/icon.svg",
       description:
         "Product development brand founded by Sedat İşkara. Planned company: ISKARA LABS OÜ — Estonia. Incorporation in progress.",
       founder: { "@id": COMPANY.founderProfile + "#sedat-iskara" },
