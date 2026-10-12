@@ -6,8 +6,7 @@ export function SiteFooter() {
     <footer className="site-footer v2-footer">
       <div className="shell v2-footer-top">
         <div className="v2-footer-wordmark">
-          <span>ISKARA</span>
-          <strong>LABS</strong>
+          <img src="/brand/logo-horizontal-color.svg" alt="Iskara Labs" width={380} height={92} style={{ maxWidth: "100%", height: "auto" }} />
         </div>
         <p>
           A founder-led product studio building governed digital systems across AI,

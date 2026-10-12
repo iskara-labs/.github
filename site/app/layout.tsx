@@ -37,6 +37,7 @@ export const metadata: Metadata = {
   publisher: COMPANY.brandName,
   alternates: { canonical: "/" },
   openGraph: {
+    images: [{ url: "/brand/open-graph.png", width: 1200, height: 630, alt: "Iskara Labs" }],
     type: "website",
     locale: "en_US",
     url: COMPANY.domain,
@@ -46,6 +47,7 @@ export const metadata: Metadata = {
       "Focused products. Governed systems. Production discipline.",
   },
   twitter: {
+    images: ["/brand/open-graph.png"],
     card: "summary_large_image",
     title: "Iskara Labs — Product Studio",
     description:
