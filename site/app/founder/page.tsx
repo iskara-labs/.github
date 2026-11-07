@@ -3,10 +3,29 @@ import Link from "next/link";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: "Founder",
+  title: "Sedat İşkara — SMMM, Yazar ve Iskara Labs Kurucusu",
   description:
-    "Sedat İşkara, founder of Iskara Labs — SMMM, MBA and founder-product builder working across finance, operations, software, data and AI systems.",
+    "Sedat İşkara, İzmir’de serbest muhasebeci mali müşavir (SMMM) ve MuhasebeTR yazarıdır. Iskara Labs ve ReguShield AI’ı kurdu, yazılım ve yapay zekâ ürünleri geliştiriyor.",
   alternates: { canonical: "/founder" },
+};
+
+const authorProfile = "https://www.muhasebetr.com/yazarlarimiz/sedatiskara/";
+const reguShieldTeam = "https://regushield.ai/team";
+const officeProfile = "https://www.google.com/maps/place/Sedat+%C4%B0%C5%9Fkara+-+Mali+M%C3%BC%C5%9Favir+(SMMM)+%2F+%C4%B0%C5%9Fkara+Mali+M%C3%BC%C5%9Favirlik/data=!4m6!3m5!1s0x14bbd806ab6d3b5d:0x6148b9223096d3f7!8m2!3d38.4572946!4d27.1677642!16s%2Fg%2F11gb3wgh0l";
+
+const profilePage = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": COMPANY.founderProfile + "#profile",
+  url: COMPANY.founderProfile,
+  mainEntity: {
+    "@type": "Person",
+    "@id": COMPANY.founderProfile + "#sedat-iskara",
+    name: COMPANY.founderName,
+    alternateName: COMPANY.founderAlternateName,
+    url: COMPANY.founderProfile,
+    sameAs: [COMPANY.founderLinkedIn, authorProfile],
+  },
 };
 
 const founderFacts = [
@@ -37,6 +56,12 @@ const principles = [
 export default function FounderPage() {
   return (
     <section className="page shell v2-founder-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(profilePage).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="founder-hero-grid">
         <div className="page-intro v2-page-intro" data-reveal>
           <div className="v2-status-row">
@@ -98,6 +123,26 @@ export default function FounderPage() {
             ))}
           </div>
         </aside>
+      </div>
+
+      <div className="founder-company-note" lang="tr" data-reveal>
+        <div>
+          <p className="section-kicker">Mali müşavirlik, yazarlık ve teknoloji</p>
+          <h2>Sedat İşkara kimdir?</h2>
+        </div>
+        <div>
+          <p>
+            Sedat İşkara, İzmir’de İşkara Mali Müşavirlik bünyesinde çalışan serbest
+            muhasebeci mali müşavir (SMMM) ve MuhasebeTR yazarıdır. Iskara Labs ve
+            ReguShield AI’ın kurucusu olarak yazılım ve yapay zekâ ürünleri geliştirir.
+          </p>
+          <ul>
+            <li><a className="text-link" href={officeProfile}>İşkara Mali Müşavirlik · Google Haritalar</a></li>
+            <li><a className="text-link" href={authorProfile}>Sedat İşkara’nın MuhasebeTR makaleleri</a></li>
+            <li><a className="text-link" href={reguShieldTeam}>ReguShield AI · Kurucu ve ekip</a></li>
+            <li><Link className="text-link" href="/portfolio">Iskara Labs · Yazılım projeleri</Link></li>
+          </ul>
+        </div>
       </div>
 
       <div className="section-heading compact-heading v2-section-heading" data-reveal>
