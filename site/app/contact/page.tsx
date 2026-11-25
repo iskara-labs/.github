@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -11,11 +10,11 @@ export const metadata: Metadata = {
 const contactPaths = [
   {
     label: "Product & partnerships",
-    title: "Build with context",
-    copy: "For product, partnership and ecosystem conversations, start with the Iskara Labs founder profile and company context.",
-    href: COMPANY.founderPath,
-    cta: "Founder profile →",
-    external: false,
+    title: "Email Iskara Labs",
+    copy: "For product, partnership and ecosystem conversations, contact Iskara Labs directly.",
+    href: `mailto:${COMPANY.contactEmail}`,
+    cta: COMPANY.contactEmail,
+    kind: "email",
   },
   {
     label: "Engineering",
@@ -23,7 +22,7 @@ const contactPaths = [
     copy: "The Iskara Labs GitHub organization exposes only the organization profile and repositories intentionally made public. Private product repositories remain private.",
     href: COMPANY.github,
     cta: "Public GitHub organization ↗",
-    external: true,
+    kind: "external",
   },
   {
     label: "Professional network",
@@ -31,7 +30,7 @@ const contactPaths = [
     copy: "For investor, advisor and ecosystem introductions, use the founder's professional network profile.",
     href: COMPANY.founderLinkedIn,
     cta: "LinkedIn ↗",
-    external: true,
+    kind: "external",
   },
 ] as const;
 
@@ -44,7 +43,7 @@ export default function ContactPage() {
             <i aria-hidden="true" />
             Verified channels only
           </span>
-          <span>No invented mailbox · no placeholder form</span>
+          <span>Direct email · no contact form</span>
         </div>
         <p className="section-kicker">Contact</p>
         <h1>
@@ -52,9 +51,8 @@ export default function ContactPage() {
           <span> Keep the signal clean.</span>
         </h1>
         <p>
-          Iskara Labs is still in its pre-incorporation operating phase. Until a
-          branded mailbox is actually provisioned, this page only publishes
-          verified channels that are already real and monitored.
+          For general enquiries and partnerships, email Iskara Labs directly.
+          You can also find our public engineering and founder profiles below.
         </p>
       </div>
 
@@ -80,20 +78,16 @@ export default function ContactPage() {
             style: { ["--reveal-delay" as string]: `${index * 85}ms` },
           };
 
-          return item.external ? (
+          return (
             <a
               key={item.label}
               {...shared}
               href={item.href}
-              target="_blank"
-              rel="noreferrer"
+              target={item.kind === "external" ? "_blank" : undefined}
+              rel={item.kind === "external" ? "noreferrer" : undefined}
             >
               {content}
             </a>
-          ) : (
-            <Link key={item.label} {...shared} href={item.href}>
-              {content}
-            </Link>
           );
         })}
       </div>
@@ -109,8 +103,8 @@ export default function ContactPage() {
         <div className="console-body">
           <div className="console-row">
             <span>Branded mailbox</span>
-            <strong>Not published yet</strong>
-            <small>Pending provisioning</small>
+            <strong>{COMPANY.contactEmail}</strong>
+            <small>Active</small>
           </div>
           <div className="console-row">
             <span>Contact form</span>

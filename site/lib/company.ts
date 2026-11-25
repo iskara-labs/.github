@@ -1,6 +1,7 @@
 export const COMPANY = {
   brandName: "Iskara Labs",
   domain: "https://iskaralabs.co",
+  contactEmail: "hello@iskaralabs.co",
   founderName: "Sedat İşkara",
   founderAlternateName: "Sedat Iskara",
   founderProfile: "https://iskaralabs.co/founder",
