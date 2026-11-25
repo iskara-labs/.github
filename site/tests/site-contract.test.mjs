@@ -61,6 +61,14 @@ assert.doesNotMatch(profile, /Portfolio priorities/);
 assert.doesNotMatch(profile, /Nowly founder profile/);
 assert.match(profile, /Private product repositories/);
 
+assert.match(company, /contactEmail: "hello@iskaralabs\.co"/);
+for (const source of [contact, footer]) {
+  assert.match(source, /`mailto:\$\{COMPANY\.contactEmail\}`/);
+}
+assert.doesNotMatch(contact, /Not published yet|Pending provisioning/);
+assert.match(profile, /\[hello@iskaralabs\.co\]\(mailto:hello@iskaralabs\.co\)/);
+assert.match(read("app/layout.tsx"), /email: COMPANY\.contactEmail/);
+
 console.log("Iskara Labs site contracts: PASS");
 
 

@@ -12,7 +12,8 @@ Iskara Labs is a founder-led product studio building governed digital systems ac
 Sedat's professional base is finance, accounting and business operations. Alongside his SMMM and MBA background, he has pursued structured technical training across software development, databases, networking, information security, cryptology, big data, machine learning and AI-agent development. The positioning is deliberate: technically hands-on founder and product builder, not a claim of a formal software-engineering degree.
 
 **Website:** https://iskaralabs.co  
-**Founder:** https://iskaralabs.co/founder
+**Founder:** https://iskaralabs.co/founder  
+**Contact:** [hello@iskaralabs.co](mailto:hello@iskaralabs.co)
 
 ## Portfolio
 

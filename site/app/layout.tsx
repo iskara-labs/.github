@@ -83,6 +83,7 @@ const structuredData = {
     {
       "@type": "Organization",
       "@id": COMPANY.domain + "/#brand",
+      email: COMPANY.contactEmail,
       name: COMPANY.brandName,
       url: COMPANY.domain,
       logo: COMPANY.domain + "/icon.svg",
